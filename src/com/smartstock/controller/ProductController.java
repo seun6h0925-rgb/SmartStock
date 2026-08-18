@@ -75,4 +75,20 @@ public class ProductController {
             System.out.println("[오류] 해당 상품이 없습니다.");
         }
     }
+
+    public void showProductsByCategory(Category category) {
+
+        for (Product product : repository.findByCategory(category)) {
+            System.out.println(product);
+        }
+    }
+
+    public void showLowStockProducts(int quantity) {
+
+        for (Product product : repository.findLowStockProducts(quantity)) {
+            System.out.println(product);
+        }
+    }
+
+
 }

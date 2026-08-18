@@ -12,6 +12,8 @@ public class ProductView {
     System.out.println("3. 상품 번호 조회");
     System.out.println("4. 상품 수정");
     System.out.println("5. 상품 삭제");
+    System.out.println("6. 카테고리별 상품 조회");
+    System.out.println("7. 재고 부족 상품 조회");
     System.out.println("9. 프로그램 종료");
 }
     private final Scanner scanner = new Scanner(System.in);
@@ -21,7 +23,7 @@ public class ProductView {
         while (true) {
             int menu = readInt("메뉴를 선택하세요: ");
 
-            if ((menu >= 1 && menu <= 5) || menu == 9) {
+            if ((menu >= 1 && menu <= 7) || menu == 9) {
                 return menu;
             }
 
@@ -128,4 +130,18 @@ public class ProductView {
     public void printMessage(String message) {
         System.out.println(message);
     }
+
+    public int inputStockLimit() {
+
+        while (true) {
+            int quantity = readInt("재고 기준 수량을 입력하세요: ");
+
+            if (quantity >= 0) {
+                return quantity;
+            }
+
+            System.out.println("[오류] 재고 기준 수량은 0 이상이어야 합니다.");
+        }
+    }
+
 }

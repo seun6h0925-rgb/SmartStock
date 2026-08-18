@@ -1,5 +1,6 @@
 package com.smartstock.repository;
 
+import com.smartstock.model.Category;
 import com.smartstock.model.Product;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,4 +52,20 @@ public class ProductRepository {
         products.remove(product);
         return true;
     }
+
+    public List<Product> findByCategory(Category category) {
+
+        return products.stream()
+                .filter(product -> product.getCategory() == category)
+                .toList();
+    }
+
+    public List<Product> findLowStockProducts(int quantity) {
+
+        return products.stream()
+                .filter(product -> product.getStockQuantity() <= quantity)
+                .toList();
+    }
+
+
 }
